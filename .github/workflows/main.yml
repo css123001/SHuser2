@@ -10,7 +10,7 @@ jobs:
     - name: Mirror + trigger CI
       uses: SvanBoxel/gitlab-mirror-and-ci-action@use-gitlab-pipeline-webhook
       with:
-        args: "git@codeingress-test.hic.dundee.ac.uk:csword001/shuser2"
+        args: "https://codeingress-test.hic.dundee.ac.uk/csword001/shuser2.git"
       env:
         GITLAB_HOSTNAME: "codeingress-test.hic.dundee.ac.uk"
         GITLAB_USERNAME: "csword001"
