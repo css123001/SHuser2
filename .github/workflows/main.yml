@@ -8,7 +8,7 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: Mirror + trigger CI
-      uses: SvanBoxel/gitlab-mirror-and-ci-action@0.2.5
+      uses: SvanBoxel/gitlab-mirror-and-ci-action@0.2
       with:
         args: "https://codeingress-test.hic.dundee.ac.uk/csword001/shuser2"
       env:
