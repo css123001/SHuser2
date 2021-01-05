@@ -17,3 +17,4 @@ jobs:
         GITLAB_PASSWORD: ${{ secrets.CODE_INGRESS_USER2  }} 
         GITLAB_PROJECT_ID: "19"
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
+        POLL_TIMEOUT: "300"
