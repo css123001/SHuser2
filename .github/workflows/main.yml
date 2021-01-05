@@ -14,8 +14,5 @@ jobs:
     - uses: actions/checkout@v2
     - uses: net-engine/github-repository-sync-action@v1.2.0
       with:
-        fetch-depth: 0
-    - uses: ./
-      with:
         ssh_private_key: ${{ secrets.CODE_INGRESS_USER2 }}
         target_repo_url: git@codeingress-test.hic.dundee.ac.uk:csword001/shuser2.git
