@@ -1,14 +1,16 @@
-name: Mirror to Bitbucket Repo
 
-on: [ push, delete, create ]
+name: "test"
+on:
+  push:
 
 jobs:
-  git-mirror:
+  test: # make sure the action works on a clean machine without building
     runs-on: ubuntu-latest
     steps:
-      - uses: wearerequired/git-mirror-action@v1
-        env:
-          SSH_PRIVATE_KEY: ${{ secrets.CODE_INGRESS_USER2 }}
-        with:
-          source-repo: 'git@github.com:css123001/SHuser2.git'
-          destination-repo: 'git@codeingress-test.hic.dundee.ac.uk:csword001/shuser2.git'
+    - uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+    - uses: ./
+      with:
+        ssh_private_key: ${{ secrets.CODE_INGRESS_USER2 }}
+        target_repo_url: git@codeingress-test.hic.dundee.ac.uk:csword001/shuser2.git
