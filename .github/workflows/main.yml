@@ -5,14 +5,21 @@ on:
 
 jobs:
   test: # make sure the action works on a clean machine without building
-    
-
     runs-on: ubuntu-latest
-    
     steps:
-      
     - uses: actions/checkout@v2
-    - uses: net-engine/github-repository-sync-action@v1.2.0
+      with:
+        fetch-depth: 0
+    - uses: ./
       with:
         ssh_private_key: ${{ secrets.CODE_INGRESS_USER2 }}
+        target_repo_url: git@codeingress-test.hic.dundee.ac.uk:csword001/shuser2.git
+
+    - uses: net-engine/github-repository-sync-action@v1
+      with:
+        # The SSH private key for SSH connection to the target repository.
+        # We strongly recommend saving this value as a GitHub Secret and using deploy
+        # keys within the target repository
+        ssh_private_key: ${{ secrets.CODE_INGRESS_USER2 }}
+        # The SSH-based URL to the target repository
         target_repo_url: git@codeingress-test.hic.dundee.ac.uk:csword001/shuser2.git
