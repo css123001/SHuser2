@@ -1,0 +1,19 @@
+name: shuser2-mirror
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Mirror + trigger CI
+      uses: SvanBoxel/gitlab-mirror-and-ci-action@master
+      with:
+        args: "https://codeingress-test.hic.dundee.ac.uk/csword001/shuser2"
+      env:
+        GITLAB_HOSTNAME: "codeingress-test.hic.dundee.ac.uk"
+        GITLAB_USERNAME: "csword001"
+        GITLAB_PASSWORD: ${{ secrets.CODE_INGRESS_1  }} 
+        GITLAB_PROJECT_ID: "19"
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
