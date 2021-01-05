@@ -1,15 +1,14 @@
-name: Mirroring
+name: Mirror to Bitbucket Repo
 
-on: [push, delete]
+on: [ push, delete, create ]
 
 jobs:
-  to_gitlab:
-    runs-on: ubuntu-18.04
-    steps:                                              # <-- must use actions/checkout@v1 before mirroring!
-    - uses: actions/checkout@v1
-    - uses: pixta-dev/repository-mirroring-action@v1
-      with:
-        target_repo_url:
-          git@codeingress-test.hic.dundee.ac.uk:csword001/shuser2.git
-        ssh_private_key:                                # <-- use 'secrets' to pass credential information.
-          ${{ secrets.CODE_INGRESS_USER2 }}
+  git-mirror:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: wearerequired/git-mirror-action@v1
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.CODE_INGRESS_USER2 }}
+        with:
+          source-repo: 'git@github.com:css123001/SHuser2.git'
+          destination-repo: 'git@codeingress-test.hic.dundee.ac.uk:csword001/shuser2.git'
