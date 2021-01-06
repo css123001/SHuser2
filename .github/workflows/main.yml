@@ -1,15 +1,19 @@
 
-name: Mirror to Bitbucket Repo
-
-on: [ push, delete, create ]
+name: "units-test"
+on:
+  pull_request:
+  push:
+    branches:
+      - master
+      - 'releases/*'
 
 jobs:
-  git-mirror:
+  test:
     runs-on: ubuntu-latest
     steps:
-      - uses: kielabokkie/ssh-key-and-known-hosts-action@v1
-        with:
-          ssh-private-key: ${{ secrets.CODE_INGRESS_USER2 }}
-          ssh-host: codeingress-test.hic.dundee.ac.uk
-  
+    - uses: actions/checkout@v1
+    - uses: ./
+      with:
+        ssh-private-key: ${{ secrets.CODE_INGRESS_USER2 }}
+        ssh-host: codeingress-test.hic.dundee.ac.uk
      
