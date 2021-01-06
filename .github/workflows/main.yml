@@ -12,9 +12,4 @@ jobs:
           ssh-private-key: ${{ secrets.CODE_INGRESS_USER2 }}
           ssh-host: codeingress-test.hic.dundee.ac.uk
   
-      - uses: wearerequired/git-mirror-action@v1
-        env:
-          SSH_PRIVATE_KEY: ${{ secrets.CODE_INGRESS_USER2 }}
-        with:
-          source-repo: 'git@github.com:css123001/SHuser2.git'
-          destination-repo: 'git@codeingress-test.hic.dundee.ac.uk:csword001/shuser2.git'
+     
