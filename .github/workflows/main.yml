@@ -14,11 +14,18 @@ jobs:
     needs: gitavscan
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@master
+    - uses: actions/checkout@main
     - name: Archive Release
       uses: thedoctor0/zip-release@master
       with:
         filename: 'release.zip'
+
+    - run: echo hello > release.zip
+
+    - uses: actions/upload-artifact@master
+      with:
+        name: my-zip
+        path: release.zip
 
   copy-file:
       needs: zippy
@@ -27,6 +34,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
+      - uses: actions/download-artifact@master
+        with:
+          name: my-zip
+          path: release.zip
       - name: Pushes test file
         uses: dmnemec/copy_file_to_another_repo_action@v1.0.4
         env:
