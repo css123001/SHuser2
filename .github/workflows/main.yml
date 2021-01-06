@@ -11,6 +11,7 @@ jobs:
 
 
   zippy:
+    needs: gitavscan
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
@@ -20,6 +21,7 @@ jobs:
         filename: 'release.zip'
 
   copy-file:
+      needs: zippy
       runs-on: ubuntu-latest
       steps:
       - name: Checkout
@@ -31,7 +33,7 @@ jobs:
           API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
         with:
           source_file: 'release.zip'
-          destination_repo: 'https://github.com/css123001/SHdeploy'
+          destination_repo: 'css123001/SHdeploy'
           destination_folder: 'SHuser2-Dir'
           user_email: 'csword001@dundee.ac.uk'
           user_name: 'css123001'
