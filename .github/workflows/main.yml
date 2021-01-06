@@ -7,9 +7,8 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Git AV Scan
-      uses: djdefi/gitavscan@main
-
-
+      uses: css123001/gitavscan@main
+      
   zippy:
     needs: gitavscan
     runs-on: ubuntu-latest
