@@ -1,19 +1,7 @@
 on: [push]
 
 jobs:
-  gitavscan:
-    runs-on: ubuntu-latest
-    name: History AV Scan
-    env:
-      ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
-    steps:
-    - uses: actions/checkout@v2
-    - name: Git AV Scan
-      uses: css123001/gitavscan@main
-
-      
   zippy:
-    needs: gitavscan
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@main
