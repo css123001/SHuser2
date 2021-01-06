@@ -11,8 +11,8 @@ jobs:
     - name: Git AV Scan
       uses: css123001/gitavscan@main
       if: ${{env.AV_STATUS == 'false'}}
-        run: | 
-        exit 1
+        run:| 
+          exit 1
       
   zippy:
     needs: gitavscan
