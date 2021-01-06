@@ -10,10 +10,7 @@ jobs:
     - uses: actions/checkout@v2
     - name: Git AV Scan
       uses: css123001/gitavscan@main
-    - run: echo $AV_STATUS
-      if: ${{env.AV_STATUS == 'false'}}
-        run:| 
-          exit 1
+
       
   zippy:
     needs: gitavscan
