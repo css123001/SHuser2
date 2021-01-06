@@ -1,13 +1,14 @@
-
-name: "units-test"
-on: [ push, delete, create ]
+on: [push]
 
 jobs:
-  git-mirror:
+  gitavscan:
     runs-on: ubuntu-latest
+    name: History AV Scan
     steps:
-      - uses: kielabokkie/ssh-key-and-known-hosts-action@v1
-        with:
-           ssh-private-key: ${{ secrets.CODE_INGRESS_USER2 }}
-           ssh-host: codeingress-test.hic.dundee.ac.uk
-     
+    - uses: actions/checkout@v2
+      with:
+        fetch-depth: '0'
+    - name: Git AV Scan
+      uses: djdefi/gitavscan@main
+      with:
+        full: '--full'
