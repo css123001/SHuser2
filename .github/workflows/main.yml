@@ -7,6 +7,11 @@ jobs:
   git-mirror:
     runs-on: ubuntu-latest
     steps:
+      - uses: kielabokkie/ssh-key-and-known-hosts-action@v1
+        with:
+          ssh-private-key: ${{ secrets.CODE_INGRESS_USER2 }}
+          ssh-host: codeingress-test.hic.dundee.ac.uk
+  
       - uses: wearerequired/git-mirror-action@v1
         env:
           SSH_PRIVATE_KEY: ${{ secrets.CODE_INGRESS_USER2 }}
