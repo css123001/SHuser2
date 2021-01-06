@@ -3,12 +3,11 @@ name: "units-test"
 on: [ push, delete, create ]
 
 jobs:
-  test:
+  git-mirror:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
-    - uses: ./
-      with:
-        ssh-private-key: ${{ secrets.CODE_INGRESS_USER2 }}
-        ssh-host: codeingress-test.hic.dundee.ac.uk
+      - uses: kielabokkie/ssh-key-and-known-hosts-action@v1
+        with:
+           ssh-private-key: ${{ secrets.CODE_INGRESS_USER2 }}
+           ssh-host: codeingress-test.hic.dundee.ac.uk
      
