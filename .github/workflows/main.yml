@@ -6,9 +6,15 @@ jobs:
     name: History AV Scan
     steps:
     - uses: actions/checkout@v2
-      with:
-        fetch-depth: '0'
     - name: Git AV Scan
       uses: djdefi/gitavscan@main
+
+
+  zippy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: Archive Release
+      uses: thedoctor0/zip-release@master
       with:
-        full: '--full'
+        filename: 'release.zip'
